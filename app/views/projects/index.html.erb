@@ -8,7 +8,7 @@
   <div class="add_task_field">
     <%= form_for :task, :url => tasks_path do |f| %>
       <%= f.hidden_field :project_id, :value => project.id %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :placeholder => "Start typing here to create a task..." %>
       <%= f.submit "Add Task" %>
     <% end %>
   </div>

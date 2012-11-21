@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121185544) do
+ActiveRecord::Schema.define(:version => 20121121203201) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -21,12 +21,12 @@ ActiveRecord::Schema.define(:version => 20121121185544) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.integer  "priority"
-    t.boolean  "done"
+    t.integer  "priority",   :default => 0
+    t.boolean  "done",       :default => false
     t.date     "deadline"
     t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end
