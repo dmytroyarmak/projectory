@@ -1,22 +1,28 @@
-<h1>Listing projects</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div>
+  <div class="project_header">
+    <h3><%= link_to project.name, project %></h3> 
+    <%= link_to 'Edit', edit_project_path(project) %> 
+    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>    
+  </div>
+  <div class="add_task_field">
+    <%= form_for :task, :url => tasks_path do |f| %>
+      <%= f.hidden_field :project_id, :value => project.id %>
+      <%= f.text_field :name %>
+      <%= f.submit "Add Task" %>
+    <% end %>
+  </div>
+  <ul>
+    <% project.tasks.each do |task| %>
+    <li>
+      [<%= task.done ? "+" : "-" %>] <%= task.name %>
+    <%= link_to 'Edit', edit_task_path(task) %>
+    <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
-</table>
 
 <br />
 
