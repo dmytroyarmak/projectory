@@ -135,3 +135,6 @@ a.add-project{
   width: 220px;
   margin: 0 auto;
 }
+.done-task {
+  text-decoration: line-through;
+}

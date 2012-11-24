@@ -1,4 +1,4 @@
-<%= form_for @task, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @task, :validate => true, :html => { :class => 'form-horizontal' } do |f| %>
   <%= f.hidden_field :project_id %>
   <% if !@task.errors[:project_id].blank?%>
       <div class="alert alert-error">
