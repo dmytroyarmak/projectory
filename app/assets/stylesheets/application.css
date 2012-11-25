@@ -138,3 +138,9 @@ a.add-project{
 .done-task {
   text-decoration: line-through;
 }
+h1 a {
+  color: #333;
+}
+h1 a:hover {
+  text-decoration: none;
+}
