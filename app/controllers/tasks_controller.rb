@@ -73,7 +73,7 @@ class TasksController < ApplicationController
         @task.update_attributes({:priority => @upper_task.priority + 1})
       end
       respond_to do |format|
-        format.html { redirect_to projects_url, notice: @task.priority }
+        format.html { redirect_to projects_url }
         format.json { head :no_content }
       end
     end
@@ -86,7 +86,7 @@ class TasksController < ApplicationController
         @task.update_attributes({:priority => @upper_task.priority - 1})
       end
       respond_to do |format|
-        format.html { redirect_to projects_url, notice: @task.priority }
+        format.html { redirect_to projects_url }
         format.json { head :no_content }
       end
     end
