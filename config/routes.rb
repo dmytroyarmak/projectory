@@ -1,5 +1,8 @@
 Projectory::Application.routes.draw do
-  resources :tasks
+  resources :tasks do
+    get 'up', :on => :member
+    get 'down', :on => :member
+  end
 
   resources :projects
 

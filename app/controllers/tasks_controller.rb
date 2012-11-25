@@ -80,4 +80,26 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def up
+    @task = Task.find(params[:id])
+    if @upper_task = Task.where(["priority >= ?", @task.priority]).where(["id != ?", @task.id]).order("priority").first
+      @task.update_attributes({:priority => @upper_task.priority + 1})
+    end
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: @task.priority }
+      format.json { head :no_content }
+    end
+  end
+
+  def down
+    @task = Task.find(params[:id])
+    if @upper_task = Task.where(["priority <= ?", @task.priority]).where(["id != ?", @task.id]).order("priority DESC").first
+      @task.update_attributes({:priority => @upper_task.priority - 1})
+    end
+    respond_to do |format|
+      format.html { redirect_to projects_url, notice: @task.priority }
+      format.json { head :no_content }
+    end
+  end
 end
