@@ -1,0 +1,48 @@
+<%= form_for @task, :validate => true, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.hidden_field :project_id %>
+  <% if !@task.errors[:project_id].blank?%>
+      <div class="alert alert-error">
+        <strong>Project_id </strong><%= @task.errors[:project_id].join(", ")%>.
+      </div>
+  <% end %>
+  <div class="control-group <%= "error" unless @task.errors[:name].blank? %>">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
+      <% if @task.errors[:name] %>
+        <% @task.errors[:name].each do |msg| %>
+          <span class="help-inline"><%= msg %></span><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group <%= "error" unless @task.errors[:priority].blank? %>">
+    <%= f.label :priority, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :priority, :class => 'number_field' %>
+      <% if @task.errors[:priority] %>
+        <% @task.errors[:priority].each do |msg| %>
+          <span class="help-inline"><%= msg %></span><br>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :done, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :done, :class => 'check_box' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :deadline, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.date_select :deadline, :class => 'date_select', :include_blank => true %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                projects_path, :class => 'btn' %>
+  </div>
+<% end %>
