@@ -1,3 +1,4 @@
+<% if current_user %>
   <% @projects.each do |project| %>
       <h3 class=" project-header">
         <i class="icon-list-alt"></i> <%= link_to project.name, project %>
@@ -39,4 +40,11 @@
         </table>
       </div>
   <% end %>
-<%= link_to raw('<i class="icon-plus icon-white"></i> Add TODO List'), new_project_path, :class => "btn btn-large btn-primary btn-block add-project" %>
+  <%= link_to raw('<i class="icon-plus icon-white"></i> Add TODO List'), new_project_path, :class => "btn btn-large btn-primary btn-block add-project" %>
+<% else %>
+  <div class="well">
+    <p>Welcome to the ultimate Awesome To-Do List application! Because all you need to organize your life is another to-do app. This one isn't like the others though, oh no! It is completely unique and will change everything.</p>
+    <p><%= link_to "Try it!", users_path, method: :post, :class => "btn" %></p>
+    <p>Already signed up? <%= link_to "Log in", login_path %></p>
+  </div>
+<% end %>

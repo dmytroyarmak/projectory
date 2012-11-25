@@ -17,9 +17,19 @@
       <div class="header">
         <h1><%= link_to "SIMPLE TODO LISTS", projects_path %></h1>
         <h2>FROM RUBY GARAGE</h2>
+        <p style="text-aligh: center">
+          <% if current_user %>
+            Logged in as <strong><%= current_user.name %></strong>.
+            <% if current_user.guest? %>
+              <%= link_to "Become a member", signup_path %>
+            <% else %>
+              <%= link_to "Log Out", logout_path %>
+            <% end %>
+          <% end %>
+        </p>
       </div>
       <% unless flash[:notice].blank? %>
-        <div class="alert alert-info">
+        <div class="alert alert-success">
            <button type="button" class="close" data-dismiss="alert">×</button>
           <%= content_tag :div, flash[:notice] %>
         </div>
@@ -41,7 +51,7 @@
       <%= yield %>           
     </div><!--/content-->
     <footer>
-      <p>&copy; Ruby Garage</p>
+      <p>&copy; wazzzaby</p>
     </footer>
 
     </div> <!-- /container -->
