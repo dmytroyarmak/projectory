@@ -15,27 +15,22 @@
       </div>
     </div>
 
-    <div class="control-group <%= "error" unless @user.errors[:password].blank? %>">
+    <div class="control-group <%= "error" unless @user.errors[:password_digest].blank? %>">
       <%= f.label :password, :class => 'control-label' %>
       <div class="controls">
         <%= f.password_field :password, :class => 'password_field' %>
-        <% if @user.errors[:password] %>
-          <% @user.errors[:password].each do |msg| %>
+        <% if @user.errors[:password_digest] %>
+          <% @user.errors[:password_digest].each do |msg| %>
             <span class="help-inline"><%= msg %></span><br>
           <% end %>
         <% end %>
       </div>
     </div>
 
-    <div class="control-group <%= "error" unless @user.errors[:password_confirmation].blank? %>">
+    <div class="control-group">
       <%= f.label :password_confirmation, :class => 'control-label' %>
       <div class="controls">
         <%= f.password_field :password_confirmation, :class => 'password_field' %>
-        <% if @user.errors[:password_confirmation] %>
-          <% @user.errors[:password_confirmation].each do |msg| %>
-            <span class="help-inline"><%= msg %></span><br>
-          <% end %>
-        <% end %>
       </div>
     </div>
 
