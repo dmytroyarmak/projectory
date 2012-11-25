@@ -21,7 +21,8 @@
           <% if current_user %>
             Logged in as <strong><%= current_user.name %></strong>.
             <% if current_user.guest? %>
-              <%= link_to "Become a member", signup_path %>
+              <%= link_to "Become a member", signup_path %> or 
+              <%= link_to "Log Out", logout_path %>
             <% else %>
               <%= link_to "Log Out", logout_path %>
             <% end %>
